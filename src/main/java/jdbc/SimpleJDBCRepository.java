@@ -121,7 +121,7 @@ public class SimpleJDBCRepository {
         }
     }
 
-    private void deleteUser(Long userId) {
+    public void deleteUser(Long userId) {
         try(Connection connection1 = CustomDataSource.getInstance().getConnection();
             PreparedStatement prepareStatement = connection1.prepareStatement(deleteUser)){
             prepareStatement.setLong(1, userId);
