@@ -36,8 +36,8 @@ public class CustomDataSource implements DataSource {
             synchronized (CustomDataSource.class){
                 if(instance == null){
                     Properties props = new Properties();
-                    try(FileInputStream fis = new FileInputStream("src/main/resources/app.properties");) {
-                        props.load(fis);
+                    try {
+                        props.load(CustomDataSource.class.getClassLoader().getResourceAsStream("app.properties"));
                         instance = new CustomDataSource(
                             props.getProperty("postgres.driver"),
                             props.getProperty("postgres.url"),
