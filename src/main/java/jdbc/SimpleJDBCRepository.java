@@ -20,12 +20,12 @@ public class SimpleJDBCRepository {
     private PreparedStatement ps = null;
     private Statement st = null;
 
-    private static final String createUserSQL = "INSERT INTO Users (firstname, lastname, age) VALUES (?, ?, ?)";
-    private static final String updateUserSQL = "UPDATE Users SET firstname = ?, lastname = ?, age = ? WHERE id = ?";
-    private static final String deleteUser = "DELETE FROM Users WHERE id = ?";
-    private static final String findUserByIdSQL = "SELECT id, firstname, lastname, age FROM Users WHERE id = ?";
-    private static final String findUserByNameSQL = "SELECT id, firstname, lastname, age FROM Users WHERE firstname = ?";
-    private static final String findAllUserSQL = "SELECT id, firstname, lastname, age FROM Users";
+    private static final String createUserSQL = "INSERT INTO myusers (firstname, lastname, age) VALUES (?, ?, ?)";
+    private static final String updateUserSQL = "UPDATE myusers SET firstname = ?, lastname = ?, age = ? WHERE id = ?";
+    private static final String deleteUser = "DELETE FROM myusers WHERE id = ?";
+    private static final String findUserByIdSQL = "SELECT id, firstname, lastname, age FROM myusers WHERE id = ?";
+    private static final String findUserByNameSQL = "SELECT id, firstname, lastname, age FROM myusers WHERE firstname = ?";
+    private static final String findAllUserSQL = "SELECT id, firstname, lastname, age FROM myusers";
 
     public Long createUser(User user) {
         try(Connection connection1 = CustomDataSource.getInstance().getConnection();
