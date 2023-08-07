@@ -133,19 +133,4 @@ public class SimpleJDBCRepository {
             throw new RuntimeException(ex);
         }
     }
-
-    public static void main(String[] args) throws SQLException {
-        SimpleJDBCRepository repository = new SimpleJDBCRepository();
-        Connection connection = CustomDataSource.getInstance().getConnection();
-        Statement st = connection.createStatement();
-        st.execute("create  table USERS (\n" +
-                " id serial primary key, \n" +
-                " firstname VARCHAR(255), \n" +
-                " lastname VARCHAR(255), \n" +
-                " age INT\n" +
-                ")");
-
-        User user = new User(null, "dgjdfil", "gkljmfgl", 4);
-        repository.createUser(user);
-    }
 }
