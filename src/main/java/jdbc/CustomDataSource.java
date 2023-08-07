@@ -45,20 +45,8 @@ public class CustomDataSource implements DataSource {
                             props.getProperty("postgres.password"),
                             props.getProperty("postgres.name")
                         );
-
-                        Connection connection = instance.getConnection();
-                        Statement st = connection.createStatement();
-                        st.execute("CREATE TABLE Users (\n" +
-                                " id SERIAL PRIMARY KEY, \n" +
-                                " firstname VARCHAR(255), \n" +
-                                " lastname VARCHAR(255), \n" +
-                                " age INT\n" +
-                                ")");
-
                     } catch (IOException e) {
                         e.printStackTrace();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
                     }
                 }
             }
