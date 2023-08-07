@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
+import java.sql.Statement;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -44,8 +45,24 @@ public class CustomDataSource implements DataSource {
                             props.getProperty("postgres.password"),
                             props.getProperty("postgres.name")
                         );
+
+                        SimpleJDBCRepository repository = new SimpleJDBCRepository();
+                        Connection connection = CustomDataSource.getInstance().getConnection();
+                        Statement st = connection.createStatement();
+                        st.execute("CREATE TABLE Users (\n" +
+                                " id SERIAL PRIMARY KEY, \n" +
+                                " firstname VARCHAR(255), \n" +
+                                " lastname VARCHAR(255), \n" +
+                                " age INT\n" +
+                                ")");
+
+                        User user = new User(null, "Bob", "Dilan", 1);
+                        user.setId(repository.createUser(user));
+
                     } catch (IOException e) {
                         e.printStackTrace();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }
