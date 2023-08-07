@@ -56,9 +56,6 @@ public class CustomDataSource implements DataSource {
                                 " age INT\n" +
                                 ")");
 
-                        User user = new User(null, "Bob", "Dilan", 1);
-                        user.setId(repository.createUser(user));
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (SQLException e) {
