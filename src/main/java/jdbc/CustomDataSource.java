@@ -46,8 +46,7 @@ public class CustomDataSource implements DataSource {
                             props.getProperty("postgres.name")
                         );
 
-                        SimpleJDBCRepository repository = new SimpleJDBCRepository();
-                        Connection connection = CustomDataSource.getInstance().getConnection();
+                        Connection connection = instance.getConnection();
                         Statement st = connection.createStatement();
                         st.execute("CREATE TABLE Users (\n" +
                                 " id SERIAL PRIMARY KEY, \n" +
